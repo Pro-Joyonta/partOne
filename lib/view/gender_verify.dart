@@ -1,4 +1,6 @@
 import 'package:chat_room/services/btn.dart';
+import 'package:chat_room/services/toast.dart';
+import 'package:chat_room/view/select_region.dart';
 import 'package:flutter/material.dart';
 
 class GenderSelectionForm extends StatefulWidget {
@@ -61,9 +63,10 @@ class _GenderSelectionFormState extends State<GenderSelectionForm> {
                   // You can use the selectedGender variable for further processing
                   if (selectedGender.isNotEmpty) {
                     print('Selected Gender: $selectedGender');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SelectRegion(),));
                     // Add your logic here
                   } else {
-                    print('Please select a gender');
+                    Utils.toastMessage('Please select a gender');
                   }
                 },
               )

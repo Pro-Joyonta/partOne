@@ -2,9 +2,14 @@ import 'package:chat_room/view/privacy_policy.dart';
 import 'package:chat_room/view/splash.dart';
 import 'package:chat_room/view/terms_conditons.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class MyApp extends StatelessWidget {

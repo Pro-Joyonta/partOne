@@ -1,4 +1,6 @@
 import 'package:chat_room/services/btn.dart';
+import 'package:chat_room/services/toast.dart';
+import 'package:chat_room/view/homepage.dart';
 import 'package:flutter/material.dart';
 
 class SelectRegion extends StatefulWidget {
@@ -14,11 +16,9 @@ class _SelectRegionState extends State<SelectRegion> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height * 1;
     final width = MediaQuery.of(context).size.width * 1;
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-         elevation: 0,
-        ),
+
+      return Scaffold(
+        appBar: AppBar(elevation: 0),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -62,16 +62,19 @@ class _SelectRegionState extends State<SelectRegion> {
               onTap: () {
         if (selectedRegion.isNotEmpty) {
         print('Selected Region: $selectedRegion');
-        // Add your logic here
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+        Utils.toastMessage('Welcome to Xchat');
+
+          // Add your logic here
         } else {
-        print('Please select a region');
+Utils.toastMessage('Please select a region');
         }
         },)
             ],
           ),
         ),
-      ),
-    );
+      );
+
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:chat_room/services/btn.dart';
+import 'package:chat_room/services/toast.dart';
 import 'package:chat_room/view/gender_verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,12 @@ class AgeVerify extends StatefulWidget {
 }
 
 class _AgeVerifyState extends State<AgeVerify> {
+
+  @override
+  void dispose() {
+    ageController.dispose();
+    super.dispose();
+  }
   TextEditingController ageController = TextEditingController();
 
   @override
@@ -37,8 +44,8 @@ class _AgeVerifyState extends State<AgeVerify> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-    controller: ageController,
+                  child: TextFormField(
+                     controller: ageController,
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly
@@ -69,20 +76,11 @@ class _AgeVerifyState extends State<AgeVerify> {
                     );
                   } else {
                     // Show toast to fill age
-                    Fluttertoast.showToast(
-                      msg: "You must be at least 18 years old.",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                    );
+                    Utils.toastMessage('You must be at least 18');
                   }
                 } else {
                   // Show toast to fill age
-                  Fluttertoast.showToast(
-                    msg: "Please enter your age.",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.CENTER,
-                  );
-                }
+Utils.toastMessage('Please enter your age');                }
               },
             )
 
